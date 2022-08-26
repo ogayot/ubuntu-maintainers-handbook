@@ -493,7 +493,7 @@ Git ubuntu attempts to put together a changelog entry, but it will likely have p
 
 If you dropped any changes (due to upstream fixes), you must note them in the changelog entry:
 
-      * Dropped Changes:
+      * Drop Changes:
         - Foo: change to bar
           [Fixed in 1.2.3-4]
 
