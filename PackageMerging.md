@@ -43,6 +43,7 @@ Process Steps
    - [Rebase onto New Debian](#rebase-onto-new-debian)
    - [Finish the Merge](#finish-the-merge)
    - [Fix the Changelog](#fix-the-changelog)
+ * [The brief summary of this phase](#cheat sheet)
  * [Upload a PPA](#upload-a-ppa)
    - [Get orig tarball](#get-orig-tarball)
    - [Check the source for errors](#check-the-source-for-errors)
@@ -545,6 +546,36 @@ If you diff your final logical tag against the Ubuntu package it analyses, then 
    For the purposes of this workflow, these are not considered part of our “logical delta”, and instead re-added at the end.
 
     
+
+
+
+
+A brief summary of this phase/Cheat sheet
+-----------------------------------------
+
+
+1. `rmadison <package_name>`
+2. `rmadison -u debian <package_name>`
+3. `git ubuntu clone <package_name> <package_name>-gu`
+4. `cd <package_name>-gu`
+5. `git ubuntu merge start ubuntu/devel`
+6. `git checkout -b 
+merge-<version_of_debian_unstable>-<current_ubuntu_devel_name>`
+7. `git log --stat old/debian..`
+8. `git ubuntu tag --split` -> if nothing to split, type that command 
+straight away
+9. `git rebase -i old/debian`
+10. `git diff split/(use autocomplete <tab> to autocomplete version)`
+11. `git ubuntu tag --logical`
+12. `git tag` -> check if the new tag exists
+13. `git rebase -i --onto new/debian old/debian`
+14. `quilt push -a --fuzz=0`
+15. `quilt pop -a`
+16. If there is problem with working directory which is not clean and 
+contains ./pc -> do: `git clean -ffxd`
+17. `git ubuntu merge finish ubuntu/devel`
+
+
 
 
 
