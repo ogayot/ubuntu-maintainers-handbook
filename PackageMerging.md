@@ -772,7 +772,7 @@ Create a branch to do the merge work in:
 per: https://www.debian.org/releases/
 "debian/sid" always matches to debian unstable.
 
-You can find the last import tag using `git log | grep "tag: pkg/import" | grep -v ubuntu | head -1`:
+You can find the last import tag using `git log --decorate | grep "tag: pkg/import" | grep -v ubuntu | head -1`:
 
     ...
     commit 9c3cf29c05c3fddd7359e71c978ff9a9a76e4404 (tag: pkg/import/3.1.20-3.1)
